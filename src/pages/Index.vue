@@ -35,10 +35,35 @@
           alt=""
         />
       </div>
+
+      <article v-for="post in $page.posts.edges" :key="post.id">
+        <h2>
+          <g-link class="blog-title" :to="post.node.path" rel="bookmark">{{
+            post.node.title
+          }}</g-link>
+        </h2>
+        <p>{{ post.node.summary }}..</p>
+      </article>
     </div>
     <Footer />
   </Layout>
 </template>
+
+<page-query>
+query Posts ($page: Int) {
+  posts: allPost (sortBy: "date", order: DESC, perPage: 2, page: $page) {
+    edges {
+      node {
+        id
+        title
+        date (format: "MMMM D, Y")
+        summary
+        path
+      }
+    }
+  }
+}
+</page-query>
 
 <script>
 import DesignBlock from '../components/DesignBlock'

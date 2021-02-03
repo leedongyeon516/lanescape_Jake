@@ -2,11 +2,7 @@
   <div class="layout">
     <header>
       <g-link class="logo" to="/">{{ $static.metadata.siteName }}</g-link>
-      <div
-        class="hamburger-menu"
-        @click="toggleNavBar"
-        :class="{ open: isOpen }"
-      >
+      <div class="hamburger-menu" @click="toggleNavBar" :class="{ open: isOpen }">
         <div class="menu-line"></div>
         <div class="menu-line"></div>
         <div class="menu-line"></div>
@@ -49,14 +45,14 @@ export default {
   data: () => {
     return {
       isOpen: false
-    }
+    };
   },
   created() {
-    window.addEventListener('scroll', () => {
-      let header = document.querySelector('header')
+    window.addEventListener("scroll", () => {
+      let header = document.querySelector("header");
 
-      header.classList.toggle('fixed', window.scrollY > 0)
-    })
+      header.classList.toggle("fixed", window.scrollY > 0);
+    });
 
     /*
     const query = `
@@ -85,16 +81,16 @@ export default {
   },
   methods: {
     toggleNavBar() {
-      this.isOpen = !this.isOpen
+      this.isOpen = !this.isOpen;
     }
   }
-}
+};
 </script>
 
 <style>
 body {
-  font-family: -apple-system, system-ui, BlinkMacSystemFont, 'Segoe UI', Roboto,
-    'Helvetica Neue', Arial, sans-serif;
+  font-family: -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto,
+    "Helvetica Neue", Arial, sans-serif;
   margin: 0;
   padding: 0;
   box-sizing: border-box;
@@ -242,7 +238,7 @@ header.fixed {
   }
 
   .nav-links li a:hover::after {
-    content: ' ⇁';
+    content: " ⇁";
   }
 
   .hamburger-menu {
