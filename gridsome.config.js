@@ -4,6 +4,16 @@ module.exports = {
   siteUrl: '',
   plugins: [
     {
+      use: '@gridsome/source-contentful',
+      options: {
+        space: 'vagc6170xsnj',
+        accessToken: 'qxzYwiX5M_xwHwSPpkSYMC09DlCywhqLkgzU-pqkRrA',
+        host: 'cdn.contentful.com',
+        environment: 'master',
+        typeName: 'Contentful'
+      }
+    },
+    {
       use: '@gridsome/source-filesystem',
       options: {
         path: 'blog/**/*.md',

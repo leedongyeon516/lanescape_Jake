@@ -7,7 +7,11 @@
           <g-link class="contact-us-btn" to="/contact-us/">CONTACT US</g-link>
         </li>
       </ul>
-      <div class="hamburger-menu" @click="toggleNavBar" :class="{ open: isOpen }">
+      <div
+        class="hamburger-menu"
+        @click="toggleNavBar"
+        :class="{ open: isOpen }"
+      >
         <div class="menu-line"></div>
         <div class="menu-line"></div>
         <div class="menu-line"></div>
@@ -50,47 +54,20 @@ export default {
   data: () => {
     return {
       isOpen: false
-    };
-  },
-  created() {
-    /*
-    // Connect Contentful
-    const query = `
-    {
-      blog(id: "5EIXIYrMumspz1ExQHHaEF") {
-        title
-        summery
-        date
-        content {
-          json
-        }
-      }
-    }`;
-
-    window
-      .fetch(
-        "https://graphql.contentful.com/content/v1/spaces/vagc6170xsnj/explore?access_token=qxzYwiX5M_xwHwSPpkSYMC09DlCywhqLkgzU-pqkRrA",
-        {
-          headers: { "Content-Type": "application/json" },
-          method: "POST",
-          body: JSON.stringify({ query })
-        }
-      )
-      .then(res => res.json())
-      .then(json => console.log(json.data));*/
+    }
   },
   methods: {
     toggleNavBar() {
-      this.isOpen = !this.isOpen;
+      this.isOpen = !this.isOpen
     }
   }
-};
+}
 </script>
 
 <style>
 body {
-  font-family: -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto,
-    "Helvetica Neue", Arial, sans-serif;
+  font-family: -apple-system, system-ui, BlinkMacSystemFont, 'Segoe UI', Roboto,
+    'Helvetica Neue', Arial, sans-serif;
   margin: 0;
   padding: 0;
   box-sizing: border-box;
@@ -222,7 +199,7 @@ header {
   }
 
   .nav-links li a:hover::after {
-    content: " ⇁";
+    content: ' ⇁';
   }
 
   .nav-links-extra {
