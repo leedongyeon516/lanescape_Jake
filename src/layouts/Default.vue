@@ -57,6 +57,31 @@ export default {
 
       header.classList.toggle('fixed', window.scrollY > 0)
     })
+
+    /*
+    const query = `
+    {
+      blog(id: "5EIXIYrMumspz1ExQHHaEF") {
+        title
+        summery
+        date
+        content {
+          json
+        }
+      }
+    }`;
+
+    window
+      .fetch(
+        "https://graphql.contentful.com/content/v1/spaces/vagc6170xsnj/explore?access_token=qxzYwiX5M_xwHwSPpkSYMC09DlCywhqLkgzU-pqkRrA",
+        {
+          headers: { "Content-Type": "application/json" },
+          method: "POST",
+          body: JSON.stringify({ query })
+        }
+      )
+      .then(res => res.json())
+      .then(json => console.log(json.data));*/
   },
   methods: {
     toggleNavBar() {
