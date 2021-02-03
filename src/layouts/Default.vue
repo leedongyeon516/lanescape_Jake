@@ -2,6 +2,11 @@
   <div class="layout">
     <header>
       <g-link class="logo" to="/">{{ $static.metadata.siteName }}</g-link>
+      <ul class="nav-links-extra">
+        <li>
+          <g-link class="contact-us-btn" to="/contact-us/">CONTACT US</g-link>
+        </li>
+      </ul>
       <div class="hamburger-menu" @click="toggleNavBar" :class="{ open: isOpen }">
         <div class="menu-line"></div>
         <div class="menu-line"></div>
@@ -48,13 +53,8 @@ export default {
     };
   },
   created() {
-    window.addEventListener("scroll", () => {
-      let header = document.querySelector("header");
-
-      header.classList.toggle("fixed", window.scrollY > 0);
-    });
-
     /*
+    // Connect Contentful
     const query = `
     {
       blog(id: "5EIXIYrMumspz1ExQHHaEF") {
@@ -97,11 +97,12 @@ body {
 }
 
 header {
+  background: #fff;
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
-  height: 15vh;
+  height: 13vh;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -154,6 +155,10 @@ header {
   background: #333;
 }
 
+.nav-links-extra {
+  display: none;
+}
+
 .hamburger-menu {
   position: fixed;
   right: 5vw;
@@ -170,29 +175,7 @@ header {
   transition: all 0.5s ease-in-out;
 }
 
-/**/
-header.fixed {
-  background: #222;
-  height: 10vh;
-  z-index: 100;
-}
-
-.fixed .logo,
-.fixed ul li a {
-  color: #fff;
-}
-
-.fixed .contact-us-btn {
-  color: #222 !important;
-  background: #fff;
-  transition: all 0.5s ease-in-out;
-}
-
-.fixed .menu-line {
-  background: #fff;
-}
-
-/**/
+/* Styles that are applied globally */
 .container {
   position: relative;
   top: 10vh;
@@ -205,6 +188,7 @@ header.fixed {
   text-transform: uppercase;
 }
 
+/* Screen for tablets and mobiles */
 @media screen and (max-width: 868px) {
   .logo {
     font-size: 1.5rem;
@@ -241,6 +225,24 @@ header.fixed {
     content: " ⇁";
   }
 
+  .nav-links-extra {
+    list-style: none;
+    display: block;
+    margin: 0;
+    padding: 0;
+    padding-right: 15vw;
+    transition: all 0.5s ease-in-out;
+  }
+
+  .nav-links-extra li a {
+    font-size: 0.5rem;
+    text-decoration: none;
+  }
+
+  .nav-links-extra .contact-us-btn {
+    padding: 10px 15px;
+  }
+
   .hamburger-menu {
     display: block;
   }
@@ -256,9 +258,11 @@ header.fixed {
   .hamburger-menu.open .menu-line:nth-child(3) {
     transform: translateY(-13px) rotate(45deg);
   }
+}
 
-  .fixed ul li a {
-    color: #222;
+@media screen and (max-width: 468px) {
+  .nav-links-extra {
+    display: none;
   }
 }
 </style>

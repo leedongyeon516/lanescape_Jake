@@ -14,33 +14,19 @@
     <div class="container">
       <DesignBlock />
       <div class="gallery">
-        <img
-          class="gallery-image-1"
-          src="../images/gallery-image-1.jpg"
-          alt=""
-        />
-        <img
-          class="gallery-image-2"
-          src="../images/gallery-image-2.jpg"
-          alt=""
-        />
-        <img
-          class="gallery-image-3"
-          src="../images/gallery-image-3.jpg"
-          alt=""
-        />
-        <img
-          class="gallery-image-4"
-          src="../images/gallery-image-4.jpg"
-          alt=""
-        />
+        <img class="gallery-image-1" src="../images/gallery-image-1.jpg" alt />
+        <img class="gallery-image-2" src="../images/gallery-image-2.jpg" alt />
+        <img class="gallery-image-3" src="../images/gallery-image-3.jpg" alt />
+        <img class="gallery-image-4" src="../images/gallery-image-4.jpg" alt />
       </div>
 
       <article v-for="post in $page.posts.edges" :key="post.id">
         <h2>
-          <g-link class="blog-title" :to="post.node.path" rel="bookmark">{{
+          <g-link class="blog-title" :to="post.node.path" rel="bookmark">
+            {{
             post.node.title
-          }}</g-link>
+            }}
+          </g-link>
         </h2>
         <p>{{ post.node.summary }}..</p>
       </article>
@@ -66,8 +52,8 @@ query Posts ($page: Int) {
 </page-query>
 
 <script>
-import DesignBlock from '../components/DesignBlock'
-import Footer from '../components/Footer'
+import DesignBlock from "../components/DesignBlock";
+import Footer from "../components/Footer";
 
 export default {
   components: {
@@ -75,9 +61,9 @@ export default {
     Footer
   },
   metaInfo: {
-    title: 'Home'
+    title: "Home"
   }
-}
+};
 </script>
 
 <style scoped>
@@ -110,7 +96,7 @@ img {
 }
 
 .our-story-btn:hover::after {
-  content: ' ⇁';
+  content: " ⇁";
 }
 
 .gallery {
@@ -118,8 +104,8 @@ img {
   margin-top: 10rem;
   display: grid;
   grid-template-areas:
-    'area-1 area-2'
-    'area-3 area-4';
+    "area-1 area-2"
+    "area-3 area-4";
 }
 
 .gallery img {
@@ -128,19 +114,19 @@ img {
 }
 
 .gallery-image-1 {
-  grid-area: 'area-1';
+  grid-area: "area-1";
 }
 
 .gallery-image-2 {
-  grid-area: 'area-2';
+  grid-area: "area-2";
 }
 
 .gallery-image-3 {
-  grid-area: 'area-3';
+  grid-area: "area-3";
 }
 
 .gallery-image-4 {
-  grid-area: 'area-4';
+  grid-area: "area-4";
 }
 
 article {
@@ -177,10 +163,10 @@ article p {
 
   .gallery {
     grid-template-areas:
-      'area-1'
-      'area-2'
-      'area-3'
-      'area-4';
+      "area-1"
+      "area-2"
+      "area-3"
+      "area-4";
   }
 
   article {
