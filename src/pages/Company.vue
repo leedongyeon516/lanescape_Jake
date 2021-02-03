@@ -3,6 +3,7 @@
     <HeaderImage />
     <div class="container">
       <h1 class="page-title">Company</h1>
+      <DesignBlock />
       <p>
         Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolores cum
         nesciunt, molestiae ad dignissimos numquam blanditiis. Laborum maiores
@@ -41,11 +42,13 @@
 
 <script>
 import HeaderImage from '../components/HeaderImage'
+import DesignBlock from '../components/DesignBlock'
 import Footer from '../components/Footer'
 
 export default {
   components: {
     HeaderImage,
+    DesignBlock,
     Footer
   },
   metaInfo: {
