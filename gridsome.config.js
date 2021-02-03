@@ -6,8 +6,8 @@ module.exports = {
     {
       use: '@gridsome/source-contentful',
       options: {
-        space: 'vagc6170xsnj',
-        accessToken: 'qxzYwiX5M_xwHwSPpkSYMC09DlCywhqLkgzU-pqkRrA',
+        space: 'd7dd9m7rm4tq',
+        accessToken: 'gRg14PPWtIqsePYWw4osgHV1oxObz_wDFlEeKvGCW0M',
         host: 'cdn.contentful.com',
         environment: 'master',
         typeName: 'Contentful'
@@ -22,7 +22,8 @@ module.exports = {
     }
   ],
   templates: {
-    Post: '/blog/:path'
+    ContentfulBlogPost: '/blog/:slug/'
+    //Post: '/blog/:path'
   },
   transformers: {
     remark: {

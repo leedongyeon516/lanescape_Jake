@@ -1,31 +1,31 @@
 <template>
   <Layout>
     <HeaderImage />
-    <div class="container">
+    <div class="container" v-if="$page">
       <h1 class="page-title">Blog</h1>
-      <article v-for="post in $page.posts.edges" :key="post.id">
+      <article v-for="{ node } in $page.posts.edges" :key="node.id">
         <h2>
-          <g-link class="blog-title" :to="post.node.path" rel="bookmark">{{
-            post.node.title
-          }}</g-link>
+          <g-link class="blog-title" :to="node.path">{{ node.title }}</g-link>
         </h2>
-        <p>
-          Posted on
-          <time :datetime="post.node.date">{{ post.node.date }}</time>
-        </p>
-        <p>{{ post.node.summary }}..</p>
-        <g-link class="blog-link" :to="post.node.path">Read more ⇁</g-link>
+        <div>
+          Posted on <span>{{ node.date }}</span>
+        </div>
+        <p class="blog-excerpt">{{ node.excerpt }}..</p>
+        <g-link class="blog-link" :to="node.path">Read More</g-link>
       </article>
 
-      <Pager class="blog-pagination" :info="$page.posts.pageInfo" />
+      <pager
+        v-if="$page.posts.pageInfo.totalPages > 1"
+        :info="$page.posts.pageInfo"
+      />
     </div>
     <Footer />
   </Layout>
 </template>
 
 <page-query>
-query Posts ($page: Int) {
-  posts: allPost (sortBy: "date", order: DESC, perPage: 7, page: $page) @paginate {
+query Posts($page: Int) {
+  posts: allContentfulBlogPost(sortBy: "date", order: DESC, perPage: 3, page: $page) @paginate {
     totalCount
     pageInfo {
       totalPages
@@ -34,10 +34,10 @@ query Posts ($page: Int) {
     edges {
       node {
         id
-        title
-        date (format: "MMMM D, Y")
-        summary
         path
+        title
+        date(format: "MMMM D, Y")
+        excerpt
       }
     }
   }
@@ -69,6 +69,10 @@ article {
 .blog-title {
   text-decoration: none;
   color: #444;
+}
+
+.blog-excerpt {
+  margin-bottom: 2rem;
 }
 
 .blog-link {

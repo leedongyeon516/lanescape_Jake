@@ -20,40 +20,22 @@
         <img class="gallery-image-4" src="../images/gallery-image-4.jpg" alt />
       </div>
 
-      <article v-for="post in $page.posts.edges" :key="post.id">
+      <!--<article v-for="blog in $page.blogs.edges" :key="blog.id">
         <h2>
-          <g-link class="blog-title" :to="post.node.path" rel="bookmark">
-            {{
-            post.node.title
-            }}
-          </g-link>
+          <g-link class="blog-title" rel="bookmark">{{
+            blog.node.title
+          }}</g-link>
         </h2>
-        <p>{{ post.node.summary }}..</p>
-      </article>
+        <p>{{ blog.node.summary }}..</p>
+      </article>-->
     </div>
     <Footer />
   </Layout>
 </template>
 
-<page-query>
-query Posts ($page: Int) {
-  posts: allPost (sortBy: "date", order: DESC, perPage: 2, page: $page) {
-    edges {
-      node {
-        id
-        title
-        date (format: "MMMM D, Y")
-        summary
-        path
-      }
-    }
-  }
-}
-</page-query>
-
 <script>
-import DesignBlock from "../components/DesignBlock";
-import Footer from "../components/Footer";
+import DesignBlock from '../components/DesignBlock'
+import Footer from '../components/Footer'
 
 export default {
   components: {
@@ -61,9 +43,9 @@ export default {
     Footer
   },
   metaInfo: {
-    title: "Home"
+    title: 'Home'
   }
-};
+}
 </script>
 
 <style scoped>
@@ -96,7 +78,7 @@ img {
 }
 
 .our-story-btn:hover::after {
-  content: " ⇁";
+  content: ' ⇁';
 }
 
 .gallery {
@@ -104,8 +86,8 @@ img {
   margin-top: 10rem;
   display: grid;
   grid-template-areas:
-    "area-1 area-2"
-    "area-3 area-4";
+    'area-1 area-2'
+    'area-3 area-4';
 }
 
 .gallery img {
@@ -114,19 +96,19 @@ img {
 }
 
 .gallery-image-1 {
-  grid-area: "area-1";
+  grid-area: 'area-1';
 }
 
 .gallery-image-2 {
-  grid-area: "area-2";
+  grid-area: 'area-2';
 }
 
 .gallery-image-3 {
-  grid-area: "area-3";
+  grid-area: 'area-3';
 }
 
 .gallery-image-4 {
-  grid-area: "area-4";
+  grid-area: 'area-4';
 }
 
 article {
@@ -163,10 +145,10 @@ article p {
 
   .gallery {
     grid-template-areas:
-      "area-1"
-      "area-2"
-      "area-3"
-      "area-4";
+      'area-1'
+      'area-2'
+      'area-3'
+      'area-4';
   }
 
   article {

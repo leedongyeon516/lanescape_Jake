@@ -1,34 +1,41 @@
-<!--<template>
+<template>
   <Layout>
     <div class="container">
       <h1>{{ $page.post.title }}</h1>
-      <p>Posted on {{ $page.post.date }}</p>
-      <div
-        class="markdown-body mb-8"
-        id="article-area"
-        v-html="$page.post.content"
-      />
-      <br />
-      <g-link class="blog-link" to="/blog/">↽ Back to blog</g-link>
+      <!--<g-image :src="$page.post.heroImage.file.url">-->
+      <div v-html="content" />
     </div>
+    <Footer />
   </Layout>
 </template>
 
 <page-query>
-query Post ($path: String!) {
-  post: post (path: $path) {
-    title
-    date (format: "MMMM D, Y")
-    content
+  query Post($path: String!) {
+    post: contentfulBlogPost(path: $path) {
+      title,
+      body
+    }
   }
-}
 </page-query>
 
 <script>
+import MarkdownIt from 'markdown-it'
+import Footer from '../components/Footer'
+
 export default {
+  components: {
+    Footer
+  },
   metaInfo() {
     return {
       title: this.$page.post.title
+    }
+  },
+  computed: {
+    content() {
+      const md = new MarkdownIt()
+
+      return md.render(this.$page.post.body)
     }
   }
 }
@@ -55,4 +62,4 @@ p {
   color: whitesmoke;
   background: rgb(150, 190, 150);
 }
-</style>-->
+</style>
