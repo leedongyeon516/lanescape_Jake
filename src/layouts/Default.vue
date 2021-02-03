@@ -44,31 +44,200 @@ query {
 }
 </static-query>
 
+<script>
+export default {
+  data: () => {
+    return {
+      isOpen: false
+    }
+  },
+  created() {
+    window.addEventListener('scroll', () => {
+      let header = document.querySelector('header')
+
+      header.classList.toggle('fixed', window.scrollY > 0)
+    })
+  },
+  methods: {
+    toggleNavBar() {
+      this.isOpen = !this.isOpen
+    }
+  }
+}
+</script>
+
 <style>
 body {
   font-family: -apple-system, system-ui, BlinkMacSystemFont, 'Segoe UI', Roboto,
     'Helvetica Neue', Arial, sans-serif;
   margin: 0;
   padding: 0;
-  line-height: 1.5;
+  box-sizing: border-box;
 }
 
-.layout {
-  max-width: 760px;
-  margin: 0 auto;
-  padding-left: 20px;
-  padding-right: 20px;
-}
-
-.header {
+header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 15vh;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 20px;
-  height: 80px;
+  z-index: 100;
 }
 
-.nav__link {
-  margin-left: 20px;
+.logo {
+  font-size: 2rem;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-decoration: none;
+  color: #222;
+  position: relative;
+  padding-left: 5vw;
+  transition: 0.5s;
+}
+
+.nav-links {
+  list-style: none;
+  position: relative;
+  margin: 0;
+  padding: 0;
+  padding-right: 5vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.nav-links li {
+  position: relative;
+  list-style: none;
+}
+
+.nav-links li a {
+  font-size: 0.75rem;
+  text-decoration: none;
+  color: #222;
+  position: relative;
+  margin-left: 30px;
+  transition: 0.5s;
+}
+
+.contact-us-btn {
+  color: #fff !important;
+  background: #222;
+  padding: 10px 20px;
+}
+
+.contact-us-btn:hover {
+  background: #333;
+}
+
+.hamburger-menu {
+  position: fixed;
+  right: 5vw;
+  display: none;
+  cursor: pointer;
+  z-index: 101;
+}
+
+.menu-line {
+  background: #222;
+  width: 30px;
+  height: 2px;
+  margin: 4.5px 0;
+  transition: all 0.5s ease-in-out;
+}
+
+/**/
+header.fixed {
+  background: #222;
+  height: 10vh;
+  z-index: 100;
+}
+
+.fixed .logo,
+.fixed ul li a {
+  color: #fff;
+}
+
+.fixed .contact-us-btn {
+  color: #222 !important;
+  background: #fff;
+  transition: all 0.5s ease-in-out;
+}
+
+.fixed .menu-line {
+  background: #fff;
+}
+
+/**/
+.container {
+  position: relative;
+  top: 10vh;
+  width: 75%;
+  margin: auto;
+}
+
+.page-title {
+  letter-spacing: 0.5rem;
+  text-transform: uppercase;
+}
+
+@media screen and (max-width: 868px) {
+  .logo {
+    font-size: 1.5rem;
+  }
+
+  .nav-links {
+    background: rgb(150, 190, 150);
+    position: fixed;
+    top: 0;
+    width: 100%;
+    height: 100vh;
+    padding-right: 0;
+    flex-direction: column;
+    clip-path: circle(100px at 125% -25%);
+    -webkit-clip-path: circle(100px at 125% -25%);
+    transition: all 1s ease-in-out;
+  }
+
+  .nav-links.open {
+    clip-path: circle(2000px at 125% -25%);
+    -webkit-clip-path: circle(2000px at 125% -25%);
+  }
+
+  .nav-links li {
+    margin: 20px 0;
+  }
+
+  .nav-links li a {
+    color: #222;
+    margin-left: 0;
+  }
+
+  .nav-links li a:hover::after {
+    content: ' ⇁';
+  }
+
+  .hamburger-menu {
+    display: block;
+  }
+
+  .hamburger-menu.open .menu-line:nth-child(1) {
+    transform: rotate(-405deg);
+  }
+
+  .hamburger-menu.open .menu-line:nth-child(2) {
+    transform: translate(1000%);
+  }
+
+  .hamburger-menu.open .menu-line:nth-child(3) {
+    transform: translateY(-13px) rotate(45deg);
+  }
+
+  .fixed ul li a {
+    color: #222;
+  }
 }
 </style>
