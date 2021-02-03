@@ -1,5 +1,5 @@
 {
-  "name": "lanescape_Jake",
+  "name": "lanescape",
   "private": true,
   "scripts": {
     "build": "gridsome build",
