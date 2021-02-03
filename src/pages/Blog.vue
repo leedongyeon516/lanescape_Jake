@@ -11,7 +11,7 @@
           Posted on <span>{{ node.date }}</span>
         </div>
         <p class="blog-excerpt">{{ node.excerpt }}..</p>
-        <g-link class="blog-link" :to="node.path">Read More</g-link>
+        <g-link class="blog-link" :to="node.path">Read More ⇁</g-link>
       </article>
 
       <pager

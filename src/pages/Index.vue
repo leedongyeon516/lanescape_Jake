@@ -20,18 +20,39 @@
         <img class="gallery-image-4" src="../images/gallery-image-4.jpg" alt />
       </div>
 
-      <!--<article v-for="blog in $page.blogs.edges" :key="blog.id">
+      <article v-for="{ node } in $page.posts.edges" :key="node.id">
         <h2>
-          <g-link class="blog-title" rel="bookmark">{{
-            blog.node.title
+          <g-link class="blog-title" :to="node.path" rel="bookmark">{{
+            node.title
           }}</g-link>
         </h2>
-        <p>{{ blog.node.summary }}..</p>
-      </article>-->
+        <p>{{ node.excerpt }}..</p>
+      </article>
     </div>
     <Footer />
   </Layout>
 </template>
+
+<page-query>
+query Posts($page: Int) {
+  posts: allContentfulBlogPost(sortBy: "date", order: DESC, perPage: 2, page: $page) @paginate {
+    totalCount
+    pageInfo {
+      totalPages
+      currentPage
+    }
+    edges {
+      node {
+        id
+        path
+        title
+        date(format: "MMMM D, Y")
+        excerpt
+      }
+    }
+  }
+}
+</page-query>
 
 <script>
 import DesignBlock from '../components/DesignBlock'
