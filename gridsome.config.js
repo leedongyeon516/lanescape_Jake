@@ -3,6 +3,8 @@ module.exports = {
   siteDescription: '',
   siteUrl: '',
   plugins: [
+    // I stored a space and token in here on purpose(instead of env file)
+    // so that people(at NFA) can query the database directly if it's necessary.
     {
       use: '@gridsome/source-contentful',
       options: {
@@ -13,6 +15,8 @@ module.exports = {
         typeName: 'Contentful'
       }
     },
+    // For uploading Markdown file to the website
+    // It works, but since it's not the requirement, I'm not using it.
     {
       use: '@gridsome/source-filesystem',
       options: {

@@ -41,9 +41,9 @@
 </template>
 
 <script>
-import HeaderImage from '../components/HeaderImage'
-import DesignBlock from '../components/DesignBlock'
-import Footer from '../components/Footer'
+import HeaderImage from '../components/HeaderImage.vue'
+import DesignBlock from '../components/DesignBlock.vue'
+import Footer from '../components/Footer.vue'
 
 export default {
   components: {

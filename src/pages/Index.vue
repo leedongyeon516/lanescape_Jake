@@ -55,8 +55,8 @@ query Posts($page: Int) {
 </page-query>
 
 <script>
-import DesignBlock from '../components/DesignBlock'
-import Footer from '../components/Footer'
+import DesignBlock from '../components/DesignBlock.vue'
+import Footer from '../components/Footer.vue'
 
 export default {
   components: {

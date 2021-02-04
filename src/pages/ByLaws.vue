@@ -76,8 +76,8 @@
 </template>
 
 <script>
-import HeaderImage from '../components/HeaderImage'
-import Footer from '../components/Footer'
+import HeaderImage from '../components/HeaderImage.vue'
+import Footer from '../components/Footer.vue'
 
 export default {
   components: {
